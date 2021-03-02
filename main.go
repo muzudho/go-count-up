@@ -65,6 +65,10 @@ func main() {
 
 	fmt.Println(fmt.Sprintf("GCU     | %d", number))
 
+	writeString(fileName, strconv.Itoa(number))
+}
+
+func writeString(fileName string, contents string) {
 	// 上書き用ファイル
 	file, err := os.OpenFile(fileName, os.O_WRONLY|os.O_CREATE, 0666)
 	if err != nil {
@@ -74,5 +78,5 @@ func main() {
 	defer file.Close()
 
 	// 数字を書込
-	file.WriteString(strconv.Itoa(number))
+	file.WriteString(contents)
 }
