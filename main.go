@@ -17,9 +17,11 @@ func main() {
 	}
 	fmt.Printf("GCU     | DefaultWorkingDirectory=%s\n", dwd)
 
-	// コマンドライン引数
+	// コマンドライン引数登録
 	wd := flag.String("WorkingDirectory", dwd, "Working directory path.")
+	// 解析
 	flag.Parse()
+
 	fmt.Printf("GCU     | WorkingDirectory=%s\n", *wd)
 
 	var number int
