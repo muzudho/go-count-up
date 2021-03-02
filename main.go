@@ -25,7 +25,7 @@ func main() {
 	var number int
 
 	fileName := filepath.Join(*wd, "count.log")
-	fmt.Printf("GCU     | LogFile=%s\n", *wd)
+	fmt.Printf("GCU     | LogFile=%s\n", fileName)
 
 	// ファイルの存在チェック
 	_, err = os.Stat(fileName)
@@ -63,7 +63,7 @@ func main() {
 		}
 	}
 
-	fmt.Println(fmt.Sprintf("GCU     | %d", number))
+	fmt.Println(fmt.Sprintf("GCU     | Number=%d", number))
 
 	writeString(fileName, strconv.Itoa(number))
 }
