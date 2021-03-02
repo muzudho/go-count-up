@@ -1,19 +1,34 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 	"strconv"
 )
 
 func main() {
-	fileName := "count.log"
+	// Default working directory
+	dwd, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("DefaultWorkingDirectory=%s\n", dwd)
+
+	// コマンドライン引数
+	wd := flag.String("WorkingDirectory", dwd, "Working directory path.")
+	flag.Parse()
+	fmt.Printf("WorkingDirectory=%s\n", *wd)
 
 	var number int
 
+	fileName := filepath.Join(*wd, "count.log")
+	fmt.Printf("LogFile=%s\n", *wd)
+
 	// ファイルの存在チェック
-	_, err := os.Stat(fileName)
+	_, err = os.Stat(fileName)
 	if os.IsNotExist(err) {
 		// 無ければ空ファイル作成
 		file, err := os.Create(fileName)

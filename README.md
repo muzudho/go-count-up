@@ -15,3 +15,11 @@ go build
 ```console
 go-count-up
 ```
+
+また、作業ディレクトリを指定することで ファイルがどこに出力されるかも確認してください。  
+
+```shell
+go-count-up -WorkingDirectory <WorkingDirectoryPath>
+# Example
+# go-count-up -WorkingDirectory C:/Users/むずでょ/go/src/github.com/muzudho/go-count-up/workspace
+```
