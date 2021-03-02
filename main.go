@@ -15,17 +15,17 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("DefaultWorkingDirectory=%s\n", dwd)
+	fmt.Printf("GCU     | DefaultWorkingDirectory=%s\n", dwd)
 
 	// コマンドライン引数
 	wd := flag.String("WorkingDirectory", dwd, "Working directory path.")
 	flag.Parse()
-	fmt.Printf("WorkingDirectory=%s\n", *wd)
+	fmt.Printf("GCU     | WorkingDirectory=%s\n", *wd)
 
 	var number int
 
 	fileName := filepath.Join(*wd, "count.log")
-	fmt.Printf("LogFile=%s\n", *wd)
+	fmt.Printf("GCU     | LogFile=%s\n", *wd)
 
 	// ファイルの存在チェック
 	_, err = os.Stat(fileName)
@@ -63,7 +63,7 @@ func main() {
 		}
 	}
 
-	fmt.Println(number)
+	fmt.Println(fmt.Sprintf("GCU     | %d", number))
 
 	// 上書き用ファイル
 	file, err := os.OpenFile(fileName, os.O_WRONLY|os.O_CREATE, 0666)
